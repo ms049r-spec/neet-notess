@@ -1,6 +1,6 @@
 {
   "name": "NEET NOTES",
-  "description": "A modern, 3D-first study resource platform designed for NEET aspirants in India.",
+  "description": "A modern, 3D-first study resource platform designed for NEET aspirants in India. Access short notes, revision material, mind maps, and study plans.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

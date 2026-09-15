@@ -55,6 +55,12 @@ export const Footer: React.FC<FooterProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Subtle Creator Credit Signature */}
+      <div className="max-w-[1400px] mx-auto mt-12 pt-8 border-t border-[var(--ink-light)] flex flex-col items-center justify-center text-center gap-1 text-[11px] sm:text-xs text-[var(--ink)] opacity-50 tracking-wider">
+        <span className="font-mono opacity-85">@ms049r-spec</span>
+        <span>© 2026 MullaSameer</span>
+      </div>
     </footer>
   );
 };
