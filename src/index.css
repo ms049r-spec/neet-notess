@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #fffef2;
+    --bg-surface: #ffffff;
+    --ink: #2c2b2a;
+    --ink-light: rgba(44, 43, 42, 0.1);
+    --accent: #ff6b6b;
+    --bio: #4ecdc4;
+    --phys: #45b7d1;
+    --chem: #ff9f43;
+  }
+
+  .dark {
+    --bg: #1c1b1a;
+    --bg-surface: #242321;
+    --ink: #fdfbf7;
+    --ink-light: rgba(253, 251, 247, 0.12);
+    --accent: #ff7b7b;
+    --bio: #4ecdc4;
+    --phys: #45b7d1;
+    --chem: #ff9f43;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: 
+      linear-gradient(to right, var(--ink-light) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--ink-light) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+  }
+
+  .font-sketch {
+    font-family: 'Gaegu', cursive;
+  }
+}
+
+/* Variation 3 Selection */
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
