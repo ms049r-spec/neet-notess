@@ -1,9 +1,24 @@
 ﻿import { NEETResource, SubjectId } from '../types/resource';
-import { INITIAL_RESOURCES } from '../data/mockCatalog';
 
 class ResourceService {
   async getAllResources(): Promise<NEETResource[]> {
-    return [...INITIAL_RESOURCES];
+    const response = await fetch('/catalog.json', {
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Catalog HTTP error: ${response.status}`);
+    }
+
+    const resources = (await response.json()) as NEETResource[];
+
+    if (!Array.isArray(resources)) {
+      throw new Error('Catalog response is not an array.');
+    }
+
+    return resources;
   }
 
   async getResourcesBySubject(subject: SubjectId): Promise<NEETResource[]> {

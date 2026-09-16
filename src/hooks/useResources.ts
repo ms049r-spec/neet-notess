@@ -1,6 +1,5 @@
 ﻿import { useState, useEffect, useCallback } from 'react';
 import { NEETResource } from '../types/resource';
-import { INITIAL_RESOURCES } from '../data/mockCatalog';
 import { searchEngine } from '../services/searchIndex';
 
 export function useResources() {
@@ -13,7 +12,22 @@ export function useResources() {
     setError(null);
 
     try {
-      const data = [...INITIAL_RESOURCES];
+      const response = await fetch('/catalog.json', {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Catalog HTTP error: ${response.status}`);
+      }
+
+      const data = (await response.json()) as NEETResource[];
+
+      if (!Array.isArray(data)) {
+        throw new Error('Catalog response is not an array.');
+      }
+
       setResources(data);
       searchEngine.buildIndex(data);
     } catch (err) {
