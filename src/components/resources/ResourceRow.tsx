@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { NEETResource } from '../../types/resource';
 import { RESOURCE_TYPES, SUBJECTS } from '../../config/constants';
@@ -71,3 +71,4 @@ export const ResourceRow: React.FC<ResourceRowProps> = ({ resource }) => {
     </div>
   );
 };
+
