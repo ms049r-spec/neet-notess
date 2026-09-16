@@ -1,6 +1,6 @@
-import { SubjectId, ResourceTypeId, SubjectMeta } from '../types/resource';
+﻿import { SubjectId, ResourceTypeId, SubjectMeta } from '../types/resource';
 
-export const CLOUDFLARE_R2_BASE_URL = 'https://assets.neetnotes.in/catalog';
+export const CLOUDFLARE_R2_BASE_URL = 'https://pub-8685e97f89c64dc886e870213a4d3126.r2.dev/catalog';
 
 export const SUBJECTS: Record<SubjectId, SubjectMeta> = {
   biology: {
@@ -108,3 +108,4 @@ export const RESOURCE_TYPES: Record<ResourceTypeId, { label: string; shortLabel:
     description: 'Concise lecture modules focused strictly on high-difficulty concepts.',
   },
 };
+

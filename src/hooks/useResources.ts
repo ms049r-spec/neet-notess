@@ -1,24 +1,24 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { NEETResource } from '../types/resource';
-import { resourceService } from '../services/resourceService';
+import { INITIAL_RESOURCES } from '../data/mockCatalog';
 import { searchEngine } from '../services/searchIndex';
 
 export function useResources() {
   const [resources, setResources] = useState<NEETResource[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadData = useCallback(async (force = false) => {
+  const loadData = useCallback(async () => {
     setIsLoading(true);
     setError(null);
+
     try {
-      const data = await resourceService.getAllResources(force);
+      const data = [...INITIAL_RESOURCES];
       setResources(data);
-      // Initialize search engine inverted index
       searchEngine.buildIndex(data);
     } catch (err) {
       console.error('Failed to load NEET resources', err);
-      setError('Unable to load live catalogue. Offline resources active.');
+      setError('Unable to load resource catalogue.');
     } finally {
       setIsLoading(false);
     }
@@ -32,6 +32,6 @@ export function useResources() {
     resources,
     isLoading,
     error,
-    refresh: () => loadData(true),
+    refresh: loadData,
   };
 }
